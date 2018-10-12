@@ -2,7 +2,10 @@
   'targets': [{
     'target_name': 'binding',
     'sources': [ 'src/binding.cc' ],
-    'include_dirs': ["<!@(node -p \"require('node-addon-api').include\")"],
+    'include_dirs': [
+      "<!@(node -p \"require('node-addon-api').include\")",
+      "<!@(node -p \"require('get-uv-event-loop-napi-h').include\")"
+    ],
     'dependencies': ["<!(node -p \"require('node-addon-api').gyp\")"],
     'cflags!': [ '-fno-exceptions' ],
     'cflags_cc!': [ '-fno-exceptions' ],
